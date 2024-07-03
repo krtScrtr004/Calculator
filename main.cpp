@@ -6,8 +6,9 @@
 
 int main(void)
 {
-    Calculator calcu("(12 + 21) * (45 - 45 / 20) + 79");
-    std::cout << "Result: " << calcu.getPostfix() << std::endl;
+    // FIXME (56 * 45) / (56.23 - 45 + 84.12 * (45 / 69)) - 15.12
+    Calculator calcu("((56*45)/(56.23-45+(84.12*(45/69))))-15.12");
+    std::cout << "Result: " << calcu.getResult() << std::endl;
 
     return 0;
 }
