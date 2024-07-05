@@ -9,43 +9,22 @@
 class Calculator
 {
 private:
-    std::string Postfix;
-    double Result;
-
-private:
-    inline const bool isOperator(const char c) const {
+    inline const bool isOperator(const char c) const
+    {
         return (c == '+' || c == '-' || c == '*' ||
                 c == '/' || c == '(' || c == ')');
     }
 
-    inline const int getPrecedence(const char op) const {
-        switch (op) {
-        case '(': return 3;          // ')' shall have the lowest precedence        
-        case '*':                    // to ensure that that will be the ending of                    
-        case '/': return 2;          // grouping enclosed by an opening parenthesis
-        case '+':
-        case '-': return 1;
-        default:  return 0;
-        }
-    }
+    const int getPrecedence(const char op) const;
 
-    inline const bool hasHigherPrecedence(const char a, const char b) { return getPrecedence(a) >= getPrecedence(b); }
-
-    void inToPostfix(const std::string &INFIX);
-
-    void calculate();
+    inline const bool hasHigherPrecedence(const char a, const char b) const { return getPrecedence(a) >= getPrecedence(b); }
 
     const double evaluate(const double a, const double b, const char op) const;
 
 public:
-    Calculator(const std::string &INFIX) 
-    {
-        inToPostfix(INFIX);
-        calculate();
-    }
-
-    const std::string getPostfix() const { return Postfix; }
-    const double getResult() const { return Result; }
+    const std::string writeExpression() const;
+    const std::string inToPostfix(const std::string &INFIX) const;
+    const double calculate(const std::string &POSTFIX) const;
 };
 
 #endif // CALCULATOR_H
