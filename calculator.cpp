@@ -145,7 +145,7 @@ const double Calculator::evaluate(const double a, const double b, const char op)
     case '*':
         return a * b;
     case '/':
-        if (b == 0)
+        if (a == 0)
             throw std::runtime_error("Error: Division by zero.");
         return b / a;
     default:

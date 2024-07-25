@@ -1,0 +1,6 @@
+# All .exe files
+*.exe
+main
+
+# Makefile
+makefile
